@@ -1,0 +1,190 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Form</title>
+    <style>
+        /* Mobile responsive layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            position: relative;
+        }
+
+        /* Watermark styles */
+        body::before {
+            content: "NELLAI RRB ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem; /* Large size */
+            color: rgba(0, 128, 0, 0.3); /* Light green color */
+            font-weight: bold;
+            letter-spacing: 3px;
+            z-index: -1; /* Behind all content */
+            opacity: 0.3; /* Initial opacity */
+            animation: watermarkAnimation 5s ease-in-out forwards;
+            white-space: nowrap;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        /* Watermark animation */
+        @keyframes watermarkAnimation {
+            0% {
+                opacity: 0.3;
+                font-size: 6rem;
+                color: rgba(0, 128, 0, 0.3);
+            }
+            50% {
+                opacity: 0.7;
+                font-size: 7rem;
+                color: rgba(0, 128, 0, 0.5);
+            }
+            100% {
+                opacity: 1;
+                font-size: 4rem; /* Smaller size */
+                color: grey; /* Grey color */
+            }
+        }
+
+        /* Repeat watermark text across the page */
+        body::after {
+            content: "NELLAI RRB ";
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            color: rgba(0, 128, 0, 0.3);
+            font-weight: bold;
+            letter-spacing: 3px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: watermarkAnimation 5s ease-in-out forwards;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Centered h2 and h3 text styles */
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 50px;
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* Animation for fadeIn effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Light Green Color for Correct Option dropdown */
+        select {
+            background-color: #e3f9e5; /* Light green background */
+        }
+
+        /* Mobile…
+[5:01 pm, 17/3/2025] Truck Alignment: function doPost(e) {
+  try {
+    // Parse the form data
+    var category = e.parameter.category;
+    var question = e.parameter.question;
+    var optionA = e.parameter.optionA;
+    var optionB = e.parameter.optionB;
+    var optionC = e.parameter.optionC;
+    var optionD = e.parameter.optionD;
+    var correctOption = e.parameter.correctOption;
+    var hint = e.parameter.hint;  // Add the hint parameter here
+
+    // Select the appropriate sheet based on the category
+    var sheet;
+    switch(category) {
+      case "Aptitude":
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Aptitude");
+        break;
+      case "Reasoning":
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Reasoning");
+        break;
+      case "Science":
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Science");
+        break;
+      case "General Awareness":
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("General Awareness");
+        break;
+      default:
+        return ContentService.createTextOutput("Invalid category").setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    // Check if the sheet is empty (first time writing data)
+    var firstRow = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues();
+    if (firstRow[0].join("") === "") {
+      // Add header row if sheet is empty
+      sheet.appendRow(["Category", "Question", "Option A", "Option B", "Option C", "Option D", "Correct Option", "Hint"]);
+    }
+
+    // Append the data to the corresponding sheet, including the hint
+    sheet.appendRow([category, question, optionA, optionB, optionC, optionD, correctOption, hint]);
+
+    // Return a success message
+    return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    // Log any errors for debugging
+    Logger.log(error);
+    return ContentService.createTextOutput(JSON.stringify({ success: false, error: error.message })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
