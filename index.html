@@ -237,16 +237,16 @@
         <input type="text" id="question" name="question" placeholder="Enter your question" required><br><br>
 
         <!-- Option A input with default value -->
-        <input type="text" id="optionA" name="optionA" placeholder="Option A" value=" " required><br><br>
+        <input type="text" id="optionA" name="optionA" placeholder="Option A" required><br><br>
 
         <!-- Option B input with default value -->
-        <input type="text" id="optionB" name="optionB" placeholder="Option B" value=" " required><br><br>
+        <input type="text" id="optionB" name="optionB" placeholder="Option B" required><br><br>
 
         <!-- Option C input with default value -->
-        <input type="text" id="optionC" name="optionC" placeholder="Option C" value=" " required><br><br>
+        <input type="text" id="optionC" name="optionC" placeholder="Option C"  required><br><br>
 
         <!-- Option D input with default value -->
-        <input type="text" id="optionD" name="optionD" placeholder="Option D" value=" " required><br><br>
+        <input type="text" id="optionD" name="optionD" placeholder="Option D" required><br><br>
 
         <!-- Correct Option and Hint Icon -->
         <div class="correct-option-hint">
@@ -326,7 +326,7 @@
             };
 
             // Send data to Google Apps Script 
-            fetch('https://script.google.com/macros/s/AKfycbyH08eJj6MwAVqHIGLbAT3X5v-8AW7Lz1vurRR1WyO-9vdQZVqsVTlX-jkZ4KOis8U/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbyRRzhzSa5DZ5pa-Lh8peHUN0zAvRPyqlaY4qggHRpMvlO5NxbSXLKklOtEkcUsXMc/exec', {
                 method: 'POST',
                 body: new URLSearchParams(data),
                 headers: {
